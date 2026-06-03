@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noleggio Bici | Esplora su due ruote</title>
+    <style>
+        /* Stili Base */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1, h2, h3 { color: #2c3e50; }
+        a { text-decoration: none; color: #fff; }
+
+        /* Navigazione */
+        header {
+            background: #27ae60;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        /* Sezione Eroica (Hero) */
+        .hero {
+            background-color: #ecf0f1;
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .btn {
+            display: inline-block;
+            background: #e67e22;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .btn:hover { background: #d35400; }
+
+        /* Le Nostre Bici */
+        .flotta {
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        .bici-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .card-bici {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .card-bici h3 { margin-top: 0; }
+        .prezzo { font-size: 1.2rem; color: #27ae60; font-weight: bold; }
+
+        /* Footer / Contatti */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Intestazione -->
+    <header>
+        <h2>EcoBike Rent</h2>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#flotta">Le nostre Bici</a></li>
+                <li><a href="#contatti">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sezione Principale -->
+    <section id="home" class="hero">
+        <h1>Scopri la città su due ruote</h1>
+        <p>Noleggia la bici perfetta per la tua avventura. Facile, veloce ed ecologico.</p>
+        <a href="#flotta" class="btn">Prenota Ora</a>
+    </section>
+
+    <!-- Sezione Flotta -->
+    <section id="flotta" class="flotta">
+        <h2>Scegli la tua compagna di viaggio</h2>
+        <div class="bici-container">
+            <!-- Bici 1 -->
+            <div class="card-bici">
+                <h3>City Bike</h3>
+                <p>Comoda e leggera, perfetta per muoversi agilmente tra le vie del centro storico.</p>
+                <p class="prezzo">Da 15€ / giorno</p>
+            </div>
+            <!-- Bici 2 -->
+            <div class="card-bici">
+                <h3>Mountain Bike</h3>
+                <p>Ideale per i sentieri sterrati e le avventure fuori porta in mezzo alla natura.</p>
+                <p class="prezzo">Da 25€ / giorno</p>
+            </div>
+            <!-- Bici 3 -->
+            <div class="card-bici">
+                <h3>E-Bike (Elettrica)</h3>
+                <p>Goditi il panorama senza fatica grazie alla pedalata assistita di ultima generazione.</p>
+                <p class="prezzo">Da 35€ / giorno</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contatti">
+        <h2>Vieni a trovarci</h2>
+        <p>Via delle Due Ruote 123, Città</p>
+        <p>Email: info@ecobikerent.it | Telefono: +39 012 3456789</p>
+        <p>&copy; 2026 EcoBike Rent. Tutti i diritti riservati.</p>
+    </footer>
+
+</body>
+</html>
+
