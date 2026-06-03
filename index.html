@@ -73,8 +73,14 @@
             width: 300px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        .card-bici h3 { margin-top: 0; }
-        .prezzo { font-size: 1.2rem; color: #27ae60; font-weight: bold; }
+        .card-bici h3 { margin-top: 10px; margin-bottom: 5px; }
+        .card-bici img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .prezzo { font-size: 1.2rem; color: #27ae60; font-weight: bold; margin-top: 10px; }
 
         /* Footer / Contatti */
         footer {
@@ -87,7 +93,6 @@
 </head>
 <body>
 
-    <!-- Intestazione -->
     <header>
         <h2>EcoBike Rent</h2>
         <nav>
@@ -99,50 +104,47 @@
         </nav>
     </header>
 
-    <!-- Sezione Principale -->
     <section id="home" class="hero">
         <h1>Scopri la città su due ruote</h1>
         <p>Noleggia la bici perfetta per la tua avventura. Facile, veloce ed ecologico.</p>
         <a href="#flotta" class="btn">Prenota Ora</a>
     </section>
 
-    <!-- Sezione Flotta -->
     <section id="flotta" class="flotta">
         <h2>Scegli la tua compagna di viaggio</h2>
         <div class="bici-container">
-            <!-- Bici 1 -->
+            
             <div class="card-bici">
+                <img src="citybike.png" alt="City Bike">
                 <h3>City Bike</h3>
                 <p>Comoda e leggera, perfetta per muoversi agilmente tra le vie del centro storico.</p>
                 <p class="prezzo">Da 15€ / giorno</p>
             </div>
             
-            <!-- Bici 2 -->
             <div class="card-bici">
+                <img src="mountainbike.png" alt="Mountain Bike">
                 <h3>Mountain Bike</h3>
                 <p>Ideale per i sentieri sterrati e le avventure fuori porta in mezzo alla natura.</p>
                 <p class="prezzo">Da 25€ / giorno</p>
             </div>
             
-            <!-- Bici 3 -->
             <div class="card-bici">
+                <img src="ebike.png" alt="E-Bike">
                 <h3>E-Bike (Elettrica)</h3>
                 <p>Goditi il panorama senza fatica grazie alla pedalata assistita di ultima generazione.</p>
                 <p class="prezzo">Da 35€ / giorno</p>
             </div>
 
-            <!-- Bici 4 - Downhill (AGGIUNTA) -->
             <div class="card-bici">
-                <!-- Ricorda: l'immagine caricata su GitHub deve chiamarsi esattamente downhill.png -->
-                <img src="downhill.png" alt="Bici da Downhill" style="width:100%; border-radius: 5px; margin-bottom: 10px;">
+                <img src="downhill.png" alt="Bici da Downhill">
                 <h3>Downhill (DH)</h3>
                 <p>Telai ultra-robusti e sospensioni estreme. Ideale per le discese nei bike park e l'adrenalina pura.</p>
                 <p class="prezzo">Da 40€ / giorno</p>
             </div>
+
         </div>
     </section>
 
-    <!-- Footer -->
     <footer id="contatti">
         <h2>Vieni a trovarci</h2>
         <p>Via delle Due Ruote 123, Città</p>
