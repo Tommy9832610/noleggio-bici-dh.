@@ -12,6 +12,7 @@
             padding: 0;
             color: #333;
             line-height: 1.6;
+            background-color: #f9f9f9;
         }
         h1, h2, h3 { color: #2c3e50; }
         a { text-decoration: none; color: #fff; }
@@ -22,15 +23,24 @@
             color: white;
             padding: 1rem 0;
             text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         nav ul {
             list-style: none;
             padding: 0;
+            margin: 10px 0 0 0;
         }
         nav ul li {
             display: inline;
             margin: 0 15px;
         }
+        nav ul li a {
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover { color: #f1c40f; }
 
         /* Sezione Eroica (Hero) */
         .hero {
@@ -46,10 +56,11 @@
             display: inline-block;
             background: #e67e22;
             color: white;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 5px;
             font-weight: bold;
             margin-top: 20px;
+            transition: background 0.3s;
         }
         .btn:hover { background: #d35400; }
 
@@ -71,16 +82,64 @@
             border-radius: 8px;
             padding: 20px;
             width: 300px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: left;
         }
-        .card-bici h3 { margin-top: 10px; margin-bottom: 5px; }
+        .card-bici h3 { margin-top: 10px; margin-bottom: 5px; text-align: center; }
         .card-bici img {
             width: 100%;
             height: 200px;
             object-fit: cover;
             border-radius: 5px;
         }
-        .prezzo { font-size: 1.2rem; color: #27ae60; font-weight: bold; margin-top: 10px; }
+        .prezzo { font-size: 1.2rem; color: #27ae60; font-weight: bold; margin-top: 10px; text-align: center; }
+
+        /* Sezione Prenotazione */
+        .prenotazione {
+            background: #ffffff;
+            padding: 3rem 1rem;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+        .form-prenota {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #34495e;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        .btn-submit {
+            width: 100%;
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn-submit:hover { background: #219653; }
 
         /* Footer / Contatti */
         footer {
@@ -99,6 +158,7 @@
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#flotta">Le nostre Bici</a></li>
+                <li><a href="#prenota">Prenota</a></li>
                 <li><a href="#contatti">Contatti</a></li>
             </ul>
         </nav>
@@ -107,7 +167,7 @@
     <section id="home" class="hero">
         <h1>Scopri la città su due ruote</h1>
         <p>Noleggia la bici perfetta per la tua avventura. Facile, veloce ed ecologico.</p>
-        <a href="#flotta" class="btn">Prenota Ora</a>
+        <a href="#prenota" class="btn">Prenota Ora</a>
     </section>
 
     <section id="flotta" class="flotta">
@@ -143,6 +203,52 @@
             </div>
 
         </div>
+    </section>
+
+    <section id="prenota" class="prenotazione">
+        <h2>Invia una richiesta di prenotazione</h2>
+        <p>Compila il modulo sottostante, ti risponderemo via email per confermare la disponibilità.</p>
+        
+        <form action="https://formspree.io/f/XOOOOOOO" method="POST" class="form-prenota">
+            
+            <div class="form-group">
+                <label for="nome">Nome e Cognome:</label>
+                <input type="text" id="nome" name="nome" required placeholder="Es. Mario Rossi">
+            </div>
+
+            <div class="form-group">
+                <label for="email">La tua Email:</label>
+                <input type="email" id="email" name="_replyto" required placeholder="Es. mario@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="bici">Seleziona il tipo di Bici:</label>
+                <select id="bici" name="tipo_bici" required>
+                    <option value="" disabled selected>-- Scegli un modello --</option>
+                    <option value="citybike">City Bike</option>
+                    <option value="mountainbike">Mountain Bike</option>
+                    <option value="ebike">E-Bike (Elettrica)</option>
+                    <option value="downhill">Downhill (DH)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="inizio">Data inizio noleggio:</label>
+                <input type="date" id="inizio" name="data_inizio" required>
+            </div>
+
+            <div class="form-group">
+                <label for="fine">Data fine noleggio:</label>
+                <input type="date" id="fine" name="data_fine" required>
+            </div>
+
+            <div class="form-group">
+                <label for="note">Note o richieste particolari:</label>
+                <textarea id="note" name="messaggio" rows="4" placeholder="Es. Altezza del ciclista, accessori richiesti..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Invia Richiesta</button>
+        </form>
     </section>
 
     <footer id="contatti">
