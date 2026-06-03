@@ -5,90 +5,234 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noleggio Bici | EcoBike Rent</title>
     <style>
-        body { font-family: sans-serif; margin: 0; padding: 0; color: #333; background: #f9f9f9; text-align: center; }
-        header { background: #27ae60; color: white; padding: 15px; position: sticky; top: 0; z-index: 1000; }
-        nav a { color: white; margin: 0 10px; text-decoration: none; font-weight: bold; }
-        .hero { background: #ecf0f1; padding: 40px 20px; }
-        .hero h1 { font-size: 2rem; color: #2c3e50; }
-        .hero p { font-size: 1.2rem; color: #e67e22; font-weight: bold; }
-        .btn { display: inline-block; background: #e67e22; color: white; padding: 12px 24px; border-radius: 5px; font-weight: bold; margin-top: 15px; text-decoration: none; }
-        .bici-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; }
-        .card-bici { background: white; padding: 15px; border-radius: 8px; width: 280px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .card-bici img { width: 100%; height: 180px; object-fit: cover; border-radius: 5px; }
-        .prezzo { color: #27ae60; font-weight: bold; }
-        form { background: white; padding: 20px; border-radius: 8px; max-width: 400px; margin: 20px auto; text-align: left; }
-        label { font-weight: bold; display: block; margin-top: 10px; }
-        input, select, textarea { width: 100%; padding: 10px; margin-top: 5px; box-sizing: border-box; }
-        button { width: 100%; background: #27ae60; color: white; border: none; padding: 12px; margin-top: 20px; border-radius: 4px; cursor: pointer; font-size: 1rem; }
-        footer { background: #2c3e50; color: white; padding: 20px; margin-top: 20px; }
+        /* Stili Base */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        h1, h2, h3 { color: #2c3e50; }
+        a { text-decoration: none; color: #fff; }
+
+        /* Navigazione */
+        header {
+            background: #27ae60;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        nav a:hover { color: #f1c40f; }
+
+        /* Sezione Principale (Hero) */
+        .hero {
+            background-color: #ecf0f1;
+            padding: 4rem 1rem;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .consegna-p {
+            font-size: 1.3rem;
+            color: #e67e22;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        .btn {
+            display: inline-block;
+            background: #e67e22;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .btn:hover { background: #d35400; }
+
+        /* Catalogo Bici */
+        .flotta { padding: 3rem 1rem; }
+        .bici-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .card-bici {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+        .card-bici h3 { margin-top: 10px; margin-bottom: 5px; text-align: center; }
+        .card-bici img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .prezzo { font-size: 1.2rem; color: #27ae60; font-weight: bold; margin-top: 10px; text-align: center; }
+
+        /* Sezione Prenotazione */
+        .prenotazione {
+            background: #ffffff;
+            padding: 3rem 1rem;
+            border-top: 1px solid #eee;
+        }
+        .form-prenota {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; color: #34495e; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        .btn-submit {
+            width: 100%;
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn-submit:hover { background: #219653; }
+
+        /* Footer */
+        footer { background: #2c3e50; color: white; padding: 2rem 1rem; margin-top: 3rem; }
     </style>
 </head>
 <body>
 
+    <!-- Intestazione -->
     <header>
         <nav>
             <a href="#home">Home</a>
-            <a href="#flotta">Bici</a>
+            <a href="#flotta">Le nostre Bici</a>
             <a href="#prenota">Prenota</a>
         </nav>
     </header>
 
+    <!-- Sezione Principale -->
     <section id="home" class="hero">
         <h1>EcoBike Rent</h1>
-        <p>🚲 Consegna a domicilio inclusa!</p>
-        <p>Noleggia la bici perfetta per la tua avventura.</p>
+        <p class="consegna-p">🚲 Te la consegniamo a casa!</p>
+        <p>Noleggia la bici perfetta per la tua avventura. Facile, veloce ed ecologico.</p>
         <a href="#prenota" class="btn">Prenota Ora</a>
     </section>
 
-    <section id="flotta">
-        <h2>La nostra flotta</h2>
+    <!-- Sezione Flotta -->
+    <section id="flotta" class="flotta">
+        <h2>Scegli la tua compagna di viaggio</h2>
         <div class="bici-container">
+            
             <div class="card-bici">
                 <img src="citybike.png" alt="City Bike">
                 <h3>City Bike</h3>
                 <p class="prezzo">Da 15€ / giorno</p>
             </div>
+            
             <div class="card-bici">
                 <img src="mountainbike.png" alt="Mountain Bike">
                 <h3>Mountain Bike</h3>
                 <p class="prezzo">Da 25€ / giorno</p>
             </div>
+            
             <div class="card-bici">
                 <img src="ebike.png" alt="E-Bike">
                 <h3>E-Bike (Elettrica)</h3>
                 <p class="prezzo">Da 35€ / giorno</p>
             </div>
+
             <div class="card-bici">
-                <img src="downhill.png" alt="Downhill">
+                <img src="downhill.png" alt="Bici da Downhill">
                 <h3>Downhill (DH)</h3>
                 <p class="prezzo">Da 40€ / giorno</p>
             </div>
+
         </div>
     </section>
 
-    <section id="prenota">
-        <h2>Prenotazione</h2>
-        <form action="https://formspree.io/f/xnjyakra" method="POST">
-            <label>Nome e Cognome:</label>
-            <input type="text" name="nome" required>
-            <label>Email:</label>
-            <input type="email" name="_replyto" required>
-            <label>Tipo Bici:</label>
-            <select name="tipo_bici">
-                <option value="city">City Bike</option>
-                <option value="mtb">Mountain Bike</option>
-                <option value="ebike">E-Bike</option>
-                <option value="dh">Downhill</option>
-            </select>
-            <label>Data inizio:</label>
-            <input type="date" name="data_inizio" required>
-            <button type="submit">Invia Richiesta</button>
+    <!-- Sezione Modulo di Prenotazione Completo -->
+    <section id="prenota" class="prenotazione">
+        <h2>Invia una richiesta di prenotazione</h2>
+        <p>Compila il modulo sottostante, ti risponderemo via email per confermare la disponibilità.</p>
+        
+        <form action="https://formspree.io/f/xnjyakra" method="POST" class="form-prenota">
+            
+            <div class="form-group">
+                <label for="nome">Nome e Cognome:</label>
+                <input type="text" id="nome" name="nome" required placeholder="Es. Mario Rossi">
+            </div>
+
+            <div class="form-group">
+                <label for="email">La tua Email:</label>
+                <input type="email" id="email" name="_replyto" required placeholder="Es. mario@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="bici">Seleziona il tipo di Bici:</label>
+                <select id="bici" name="tipo_bici" required>
+                    <option value="" disabled selected>-- Scegli un modello --</option>
+                    <option value="citybike">City Bike</option>
+                    <option value="mountainbike">Mountain Bike</option>
+                    <option value="ebike">E-Bike (Elettrica)</option>
+                    <option value="downhill">Downhill (DH)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="inizio">Data inizio noleggio:</label>
+                <input type="date" id="inizio" name="data_inizio" required>
+            </div>
+
+            <div class="form-group">
+                <label for="fine">Data fine noleggio:</label>
+                <input type="date" id="fine" name="data_fine" required>
+            </div>
+
+            <div class="form-group">
+                <label for="note">Note o richieste particolari:</label>
+                <textarea id="note" name="messaggio" rows="4" placeholder="Es. Altezza del ciclista, accessori richiesti..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Invia Richiesta</button>
         </form>
     </section>
 
+    <!-- Footer -->
     <footer>
-        <p>EcoBike Rent - Firenze</p>
+        <h2>EcoBike Rent - Firenze</h2>
         <p>Email: info@ecobikerent.it</p>
+        <p>&copy; 2026 EcoBike Rent. Tutti i diritti riservati.</p>
     </footer>
 
 </body>
